@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/faneva
 # CodeIgniter 4 Framework
 
 ## What is CodeIgniter?
@@ -60,6 +63,9 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - json (enabled by default - don't turn it off)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+<<<<<<< HEAD
 =======
 # Mini-projet_systemTech-RH
 >>>>>>> b2f99d19a38a491d906452037fe9319b3770eccf
+=======
+>>>>>>> origin/faneva
