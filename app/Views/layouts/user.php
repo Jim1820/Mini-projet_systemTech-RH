@@ -28,8 +28,6 @@
 
             <nav class="sidebar-nav">
                 <a class="sidebar-link" href="/user">Dashboard</a>
-                <a class="sidebar-link" href="/user/imc">IMC</a>
-                <a class="sidebar-link" href="/user/objectifs">New Objectifs</a>
             </nav>
         </aside>
 

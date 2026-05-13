@@ -21,9 +21,6 @@
 
             <nav class="sidebar-nav">
                 <a class="sidebar-link <?= $currentPath === 'admin' ? 'active' : '' ?>" href="/admin">Dashboard</a>
-                <a class="sidebar-link <?= str_starts_with($currentPath, 'admin/regime') ? 'active' : '' ?>" href="/admin/regime">Régimes</a>
-                <a class="sidebar-link <?= str_starts_with($currentPath, 'admin/sports') ? 'active' : '' ?>" href="/admin/sports">Sport</a>
-                <a class="sidebar-link <?= str_starts_with($currentPath, 'admin/codes') ? 'active' : '' ?>" href="/admin/codes">Code argent</a>
                 <a class="sidebar-link <?= str_starts_with($currentPath, 'admin/utilisateurs') ? 'active' : '' ?>" href="/admin/utilisateurs">Utilisateurs</a>
                 <div style="margin:18px 0 8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c-muted);">Paramètres</div>
                 <a class="sidebar-link <?= str_starts_with($currentPath, 'admin/gold') ? 'active' : '' ?>" href="/admin/gold">Configuration Gold</a>

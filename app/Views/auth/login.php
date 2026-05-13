@@ -5,93 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= esc($title ?? 'Connexion') ?></title>
     <link rel="stylesheet" href="/assets/css/app.css">
+    <!-- Inclusion de Bootstrap Icons pour les icônes du template -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="login-page">
-        <div class="login-card">
-            <div class="login-logo">
-                <div class="logo-icon">
-                    <img src="/assets/logo/diet.png" alt="NutriStep logo">
-                </div>
-                <div>
-                    <h1>NutriStep</h1>
-                    <span>Chaque pas compte pour votre santé</span>
-                </div>
-            </div>
 
-            <h2>Connexion</h2>
-            <p class="subtitle">Connectez-vous à votre espace de travail</p>
+<div class="auth-split">
 
-            <?php if (! empty($adminName)) : ?>
-                <div class="alert alert-info">Compte de démonstration chargé depuis la base: <?= esc((string) $adminName) ?></div>
-            <?php endif; ?>
-
-            <?php if (! empty($error)) : ?>
-                <div class="alert alert-error"><?= esc($error) ?></div>
-            <?php endif; ?>
-
-            <form action="/auth/login" method="post">
-                <div class="field-group">
-                    <label for="email">Adresse e-mail</label>
-                    <div class="input-wrap">
-                        <input type="email" id="email" name="email" placeholder="vous@exemple.com" value="<?= esc($email ?? '') ?>" required>
-                    </div>
-                    <?php if (isset($validation) && $validation->getError('email')) : ?>
-                        <small class="field-error"><?= esc((string) $validation->getError('email')) ?></small>
-                    <?php endif; ?>
-                </div>
-
-                <div class="field-group">
-                    <label for="mot_de_passe">Mot de passe</label>
-                    <div class="input-wrap" style="position:relative;">
-                        <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="••••••••" value="<?= esc($password ?? '') ?>" required style="padding-right:3rem;">
-                        <button type="button" class="toggle-password" aria-label="Afficher le mot de passe" title="Afficher le mot de passe" style="position:absolute;right:0.6rem;top:50%;transform:translateY(-50%);background:none;border:none;padding:0;line-height:0;cursor:pointer;color:inherit;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                        </button>
-                    </div>
-                    <?php if (isset($validation) && $validation->getError('mot_de_passe')) : ?>
-                        <small class="field-error"><?= esc((string) $validation->getError('mot_de_passe')) ?></small>
-                    <?php endif; ?>
-                </div>
-
-                <div class="remember-row">
-                    <label>
-                        <input type="checkbox" name="remember" value="1">
-                        Se souvenir de moi
-                    </label>
-                    <a href="#">Mot de passe oublié ?</a>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Se connecter</button>
-            </form>
-
-            <div class="login-footer">
-                Pas encore de compte ? <a href="/register/inscription1"><strong>S'inscrire</strong></a>
-            </div>
-        </div>
+  <!-- Panneau gauche -->
+  <div class="auth-left">
+    <div>
+      <p class="auth-left-brand">TechMada RH<span>Gestion des congés</span></p>
+      <p class="auth-left-text" style="margin-top:2rem">
+        <strong>Bienvenue sur votre espace RH.</strong>
+        Gérez vos demandes de congés, consultez votre solde et suivez l'état de vos demandes en temps réel.
+      </p>
     </div>
+    
+    <!-- Section Comptes de démonstration (Template statique) -->
+    <div class="auth-roles">
+      <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.25);margin-bottom:4px">Comptes de démonstration</div>
+      <div class="role-pill">
+        <i class="bi bi-shield-check"></i>
+        <div><div class="role-pill-name">Administrateur</div><div class="role-pill-cred">admin@techmada.mg · admin123</div></div>
+      </div>
+      <div class="role-pill">
+        <i class="bi bi-person-check"></i>
+        <div><div class="role-pill-name">Responsable RH</div><div class="role-pill-cred">rh@techmada.mg · rh123</div></div>
+      </div>
+      <div class="role-pill">
+        <i class="bi bi-person"></i>
+        <div><div class="role-pill-name">Employé</div><div class="role-pill-cred">employe@techmada.mg · emp123</div></div>
+      </div>
+    </div>
+  </div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var toggle = document.querySelector('.toggle-password');
-        var input = document.getElementById('mot_de_passe');
-        if (! toggle || ! input) return;
+  <!-- Panneau droit -->
+  <div class="auth-right">
+    <p class="auth-title">Connexion</p>
+    <p class="auth-sub">Entrez vos identifiants pour accéder à votre espace.</p>
 
-        var eyeSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
-        var eyeOffSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a19.92 19.92 0 0 1 4.06-5.94"></path><path d="M1 1l22 22"></path></svg>';
+    <!-- Gestion des erreurs (Flashdata CI4) -->
+    <?php if (! empty($error)) : ?>
+      <div class="flash flash-error">
+        <i class="bi bi-exclamation-circle-fill"></i>
+        <?= esc($error) ?>
+      </div>
+    <?php endif; ?>
 
-        toggle.addEventListener('click', function () {
-            if (input.type === 'password') {
-                input.type = 'text';
-                toggle.innerHTML = eyeOffSvg;
-                toggle.setAttribute('aria-label', 'Masquer le mot de passe');
-            } else {
-                input.type = 'password';
-                toggle.innerHTML = eyeSvg;
-                toggle.setAttribute('aria-label', 'Afficher le mot de passe');
-            }
-        });
-    });
-    </script>
+    <!-- Début du Formulaire adapté -->
+    <form action="/auth/login" method="post">
+      
+      <!-- Champ Email -->
+      <div class="f-group">
+        <label class="f-label">Adresse email</label>
+        <input type="email" name="email" class="f-input" placeholder="vous@techmada.mg" value="<?= esc($email ?? '') ?>">
+        <?php if (isset($validation) && $validation->getError('email')) : ?>
+            <small style="color:#dc3545; display:block; margin-top:0.25rem; font-size:0.8rem;">
+                <?= esc((string) $validation->getError('email')) ?>
+            </small>
+        <?php endif; ?>
+      </div>
+
+      <!-- Champ Mot de passe -->
+      <div class="f-group">
+        <label class="f-label">Mot de passe</label>
+        <!-- On garde le name="mot_de_passe" du layout original, sans le bouton toggle du template fourni -->
+        <input type="password" name="mot_de_passe" class="f-input" placeholder="••••••••" value="<?= esc($password ?? '') ?>">
+         <?php if (isset($validation) && $validation->getError('mot_de_passe')) : ?>
+            <small style="color:#dc3545; display:block; margin-top:0.25rem; font-size:0.8rem;">
+                <?= esc((string) $validation->getError('mot_de_passe')) ?>
+            </small>
+        <?php endif; ?>
+      </div>
+
+      <!-- Bouton Submit -->
+      <button type="submit" class="btn-primary" style="margin-top:.5rem">
+        Se connecter <i class="bi bi-arrow-right-short"></i>
+      </button>
+    </form>
+
+  </div>
+
+</div>
+
 </body>
 </html>
