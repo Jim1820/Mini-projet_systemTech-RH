@@ -24,7 +24,7 @@ class Database extends Config
      *
      * @var array<string, mixed>
      */
-    public array $default = [
+    public array $tests = [
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
@@ -162,7 +162,7 @@ class Database extends Config
      *
      * @var array<string, mixed>
      */
-    public array $tests = [
+    public array $default = [
         'DSN'         => '',
         'hostname'    => '127.0.0.1',
         'username'    => '',

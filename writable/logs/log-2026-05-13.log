@@ -544,3 +544,118 @@ Stack trace:
 #12 /opt/lampp/htdocs/S4/SysInf/codeigniter4/Mini-projet_systemTech-RH/public/index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 #13 /opt/lampp/htdocs/S4/SysInf/codeigniter4/Mini-projet_systemTech-RH/system/rewrite.php(44): require_once('/opt/lampp/htdo...')
 #14 {main}
+ERROR - 2026-05-13 07:40:14 --> Error connecting to the database: mysqli_sql_exception: No such file or directory in /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/MySQLi/Connection.php:201
+Stack trace:
+#0 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/MySQLi/Connection.php(201): mysqli->real_connect()
+#1 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Database.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#3 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#4 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#5 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#6 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#7 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#8 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#9 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#10 /home/itu/GitHub/Mini-projet_systemTech-RH/spark(87): CodeIgniter\Boot::bootSpark()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No such file or directory in /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/MySQLi/Connection.php:231
+Stack trace:
+#0 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/BaseConnection.php(555): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Database.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#3 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#4 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#5 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#6 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#7 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#8 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#9 /home/itu/GitHub/Mini-projet_systemTech-RH/spark(87): CodeIgniter\Boot::bootSpark()
+#10 {main}
+CRITICAL - 2026-05-13 07:40:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No such file or directory
+[Method: CLI, Route: db:seed/MainSeeder]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/Database.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+ 3 SYSTEMPATH/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+ 4 SYSTEMPATH/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+ 5 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 6 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 7 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 8 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+ 9 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-05-13 07:44:06 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#4 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#5 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#6 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#7 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#8 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#9 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#10 /home/itu/GitHub/Mini-projet_systemTech-RH/spark(87): CodeIgniter\Boot::bootSpark()
+#11 {main}
+CRITICAL - 2026-05-13 07:44:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: CLI, Route: db:seed/MainSeeder]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+ 4 SYSTEMPATH/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+ 5 SYSTEMPATH/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+ 6 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 7 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 8 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 9 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+10 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
+ERROR - 2026-05-13 07:45:51 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/BaseConnection.php(795): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/BaseConnection.php(1706): CodeIgniter\Database\BaseConnection->query()
+#4 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/BaseConnection.php(1726): CodeIgniter\Database\BaseConnection->listTables()
+#5 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/MigrationRunner.php(821): CodeIgniter\Database\BaseConnection->tableExists()
+#6 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/MigrationRunner.php(173): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Commands/Database/Migrate.php(89): CodeIgniter\Database\MigrationRunner->latest()
+#8 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/SignalTrait.php(245): CodeIgniter\Commands\Database\Migrate::CodeIgniter\Commands\Database\{closure}()
+#9 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Commands/Database/Migrate.php(88): CodeIgniter\Commands\Database\Migrate->withSignalsBlocked()
+#10 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Migrate->run()
+#11 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#12 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#13 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#14 /home/itu/GitHub/Mini-projet_systemTech-RH/spark(87): CodeIgniter\Boot::bootSpark()
+#15 {main}
+ERROR - 2026-05-13 07:46:15 --> Error connecting to the database: Error: Class "SQLite3" not found in /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/SQLite3/Connection.php:111
+Stack trace:
+#0 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/BaseConnection.php(555): CodeIgniter\Database\SQLite3\Connection->connect()
+#1 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+#2 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+#3 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+#4 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+#5 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+#6 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+#7 /home/itu/GitHub/Mini-projet_systemTech-RH/system/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+#8 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(442): CodeIgniter\CLI\Console->run()
+#9 /home/itu/GitHub/Mini-projet_systemTech-RH/system/Boot.php(166): CodeIgniter\Boot::runCommand()
+#10 /home/itu/GitHub/Mini-projet_systemTech-RH/spark(87): CodeIgniter\Boot::bootSpark()
+#11 {main}
+CRITICAL - 2026-05-13 07:46:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [SQLite3]: Class "SQLite3" not found
+[Method: CLI, Route: db:seed/MainSeeder]
+in SYSTEMPATH/Database/BaseConnection.php on line 606.
+ 1 SYSTEMPATH/Database/SQLite3/Connection.php(74): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/Database.php(74): CodeIgniter\Database\SQLite3\Connection->initialize()
+ 3 SYSTEMPATH/Database/Config.php(111): CodeIgniter\Database\Database->loadForge()
+ 4 SYSTEMPATH/Database/Seeder.php(103): CodeIgniter\Database\Config::forge()
+ 5 SYSTEMPATH/Commands/Database/Seed.php(71): CodeIgniter\Database\Seeder->__construct()
+ 6 SYSTEMPATH/CLI/Commands.php(74): CodeIgniter\Commands\Database\Seed->run()
+ 7 SYSTEMPATH/CLI/Console.php(47): CodeIgniter\CLI\Commands->run()
+ 8 SYSTEMPATH/Boot.php(442): CodeIgniter\CLI\Console->run()
+ 9 SYSTEMPATH/Boot.php(166): CodeIgniter\Boot::runCommand()
+10 ROOTPATH/spark(87): CodeIgniter\Boot::bootSpark()
