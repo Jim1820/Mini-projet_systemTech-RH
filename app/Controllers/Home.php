@@ -13,12 +13,13 @@ class Home extends BaseController
         }
 
         $role = (string) $session->get('user_role');
-        $id_role = $session->get('id_role') ?? $session->get('user_role_id');
 
-        if ($role === 'admin' || $id_role == 1) {
+        if ($role === 'admin') {
             return redirect()->to('/admin');
+        } elseif ($role === 'rh') {
+            return redirect()->to('/rh');
+        } else {
+            return redirect()->to('/employe');
         }
-
-        return redirect()->to('/user');
     }
 }

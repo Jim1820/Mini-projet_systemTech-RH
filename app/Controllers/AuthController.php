@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\UtilisateurModel;
+use App\Models\EmployeModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class AuthController extends BaseController
@@ -11,23 +11,12 @@ class AuthController extends BaseController
     {
         $email = (string) $this->request->getPost('email');
         $password = (string) $this->request->getPost('mot_de_passe');
-        $utilisateurModel = new UtilisateurModel();
+        $employeModel = new EmployeModel();
 
         if (strtolower($this->request->getMethod()) !== 'post') {
-            $admin = null;
-
-            try {
-                $admin = $utilisateurModel->getAdminLoginData();
-            } catch (\Throwable $exception) {
-                // Fallback demo: allow the page to render even if the DB is not available yet.
-            }
-
             return view('auth/login', [
                 'title' => 'Connexion',
                 'error' => null,
-                'email' => $admin['email'] ?? 'admin@app.com',
-                'password' => 'admin1234',
-                'adminName' => $admin['nom'] ?? 'Admin Système',
             ]);
         }
 
@@ -38,7 +27,7 @@ class AuthController extends BaseController
             ],
             'mot_de_passe' => [
                 'label'  => 'Mot de passe',
-                'rules'  => 'required|min_length[4]',
+                'rules'  => 'required',
             ],
         ];
 
@@ -48,35 +37,53 @@ class AuthController extends BaseController
                 'error' => 'Données de connexion invalides.',
                 'validation' => $this->validator,
                 'email' => $email,
-                'password' => $password,
             ]);
         }
 
         try {
-            $user = $utilisateurModel->verifyLogin($email, $password);
+            $user = $employeModel->where('email', $email)->first();
         } catch (\Throwable $exception) {
             return view('auth/login', [
                 'title' => 'Connexion',
                 'error' => 'Connexion impossible: la base de données n\'est pas encore disponible.',
                 'email' => $email,
-                'password' => $password,
-                'adminName' => 'Admin Système',
             ]);
         }
 
-        if ($user === null) {
+        if (!$user || !password_verify($password, $user['password'])) {
             return view('auth/login', [
                 'title' => 'Connexion',
                 'error' => 'Email ou mot de passe incorrect.',
                 'email' => $email,
-                'password' => $password,
             ]);
         }
 
-        $sessionData = $utilisateurModel->buildLoginSessionData($user);
+        if (isset($user['actif']) && $user['actif'] == 0) {
+            return view('auth/login', [
+                'title' => 'Connexion',
+                'error' => 'Votre compte est désactivé.',
+                'email' => $email,
+            ]);
+        }
+
+        // Set session
+        $sessionData = [
+            'user_id'    => $user['id'],
+            'user_role'  => $user['role'],
+            'user_name'  => $user['prenom'] . ' ' . $user['nom'],
+            'user_email' => $user['email'],
+            'isLoggedIn' => true,
+        ];
         session()->set($sessionData);
 
-        return redirect()->to('/');
+        // Redirect based on role
+        if ($user['role'] === 'admin') {
+            return redirect()->to('/admin');
+        } elseif ($user['role'] === 'rh') {
+            return redirect()->to('/rh');
+        } else {
+            return redirect()->to('/employe');
+        }
     }
 
     public function logout(): ResponseInterface
@@ -99,7 +106,6 @@ class AuthController extends BaseController
             'status' => 'success',
             'user'   => [
                 'id'       => session()->get('user_id'),
-                'role_id'  => session()->get('user_role_id'),
                 'role'     => session()->get('user_role'),
                 'name'     => session()->get('user_name'),
                 'email'    => session()->get('user_email'),

@@ -12,7 +12,7 @@ class SoldeModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['employe_id', 'type_conge_id', 'annee', 'jours_attribues', 'jours_pris'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

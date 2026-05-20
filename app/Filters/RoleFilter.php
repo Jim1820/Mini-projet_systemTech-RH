@@ -15,28 +15,13 @@ class RoleFilter implements FilterInterface
         $allowedRoles = array_values(array_filter($arguments ?? []));
 
         if ($allowedRoles === []) {
-            return service('response')
-                ->setStatusCode(403)
-                ->setJSON([
-                    'status'  => 'error',
-                    'message' => 'Aucun rôle autorisé n’a été défini pour cette route.',
-                ]);
+            return redirect()->to('/auth/login')->with('error', 'Accès refusé.');
         }
 
         $role = (string) $session->get('user_role');
 
-        if ($role === '' && $session->get('user_role_id')) {
-            $roleModel = new UserRoleModel();
-            $role = (string) ($roleModel->getRoleLabelById((int) $session->get('user_role_id')) ?? '');
-        }
-
         if ($role === '' || ! in_array($role, $allowedRoles, true)) {
-            return service('response')
-                ->setStatusCode(403)
-                ->setJSON([
-                    'status'  => 'error',
-                    'message' => 'Accès refusé. Vous n’avez pas le bon rôle.',
-                ]);
+            return redirect()->to('/')->with('error', 'Accès refusé. Vous n’avez pas le bon rôle.');
         }
     }
 
